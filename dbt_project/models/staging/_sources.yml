@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+  - name: erp_raw
+    database: "{{ env_var('WAREHOUSE_POSTGRES_DB', 'warehouse_db') }}"
+    schema: raw
+    tables:
+      - {name: stores}
+      - {name: employees}
+      - {name: payment_methods}
+      - {name: customers}
+      - {name: products}
+      - {name: orders}
+      - {name: order_items}
+      - {name: payments}
+      - {name: inventory_movements}

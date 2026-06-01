@@ -1,0 +1,20 @@
+version: 2
+models:
+  - name: stg_stores
+    columns: [{name: store_id, tests: [not_null, unique]}]
+  - name: stg_employees
+    columns: [{name: employee_id, tests: [not_null, unique]}]
+  - name: stg_payment_methods
+    columns: [{name: payment_method_id, tests: [not_null, unique]}]
+  - name: stg_customers
+    columns: [{name: customer_id, tests: [not_null, unique]}]
+  - name: stg_products
+    columns: [{name: product_id, tests: [not_null, unique]}]
+  - name: stg_orders
+    columns: [{name: order_id, tests: [not_null, unique]}]
+  - name: stg_order_items
+    columns: [{name: order_item_id, tests: [not_null, unique]}]
+  - name: stg_payments
+    columns: [{name: payment_id, tests: [not_null, unique]}]
+  - name: stg_inventory_movements
+    columns: [{name: movement_id, tests: [not_null, unique]}]

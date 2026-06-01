@@ -1,0 +1,17 @@
+# profiles.yml — uses environment variables so it works both inside Docker
+# (where host = warehouse-postgres) and locally (where host = localhost).
+# Never hardcode credentials here.
+
+retailco:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host:     "{{ env_var('WAREHOUSE_POSTGRES_HOST', 'localhost') }}"
+      port:     "{{ env_var('WAREHOUSE_POSTGRES_PORT', '5434') | int }}"
+      database: "{{ env_var('WAREHOUSE_POSTGRES_DB',   'warehouse_db') }}"
+      user:     "{{ env_var('WAREHOUSE_POSTGRES_USER',  'warehouse_user') }}"
+      password: "{{ env_var('WAREHOUSE_POSTGRES_PASSWORD', '') }}"
+      schema:   staging
+      threads:  4
+      keepalives_idle: 0

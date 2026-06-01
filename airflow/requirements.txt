@@ -1,0 +1,18 @@
+# Postgres provider for Airflow hooks and operators
+apache-airflow-providers-postgres==5.10.2
+
+# Database adapter
+psycopg2-binary==2.9.9
+
+# dlt: EL tool for lake → warehouse
+dlt[postgres]
+
+# dbt: transformation
+dbt-core==1.7.17
+dbt-postgres==1.7.17
+
+# HTTP requests for the ERP extractor
+requests==2.31.0
+
+# Retry / backoff logic
+tenacity==8.2.3

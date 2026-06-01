@@ -1,0 +1,89 @@
+version: 2
+models:
+  - name: fct_sales
+    columns:
+      - name: sales_key
+        tests: [not_null, unique]
+      - name: date_key
+        tests:
+          - not_null
+          - relationships: {to: ref('dim_date'), field: date_key}
+      - name: customer_key
+        tests:
+          - not_null
+          - relationships: {to: ref('dim_customer'), field: customer_key}
+      - name: product_key
+        tests:
+          - not_null
+          - relationships: {to: ref('dim_product'), field: product_key}
+      - name: store_key
+        tests:
+          - not_null
+          - relationships: {to: ref('dim_store'), field: store_key}
+      - name: employee_key
+        tests:
+          - not_null
+          - relationships: {to: ref('dim_employee'), field: employee_key}
+
+  - name: fct_payments
+    columns:
+      - name: payment_key
+        tests: [not_null, unique]
+      - name: date_key
+        tests:
+          - not_null
+          - relationships: {to: ref('dim_date'), field: date_key}
+      - name: customer_key
+        tests:
+          - not_null
+          - relationships: {to: ref('dim_customer'), field: customer_key}
+      - name: payment_method_key
+        tests:
+          - not_null
+          - relationships: {to: ref('dim_payment_method'), field: payment_method_key}
+
+  - name: fct_inventory_daily
+    columns:
+      - name: inventory_daily_key
+        tests: [not_null, unique]
+      - name: date_key
+        tests:
+          - not_null
+          - relationships: {to: ref('dim_date'), field: date_key}
+      - name: product_key
+        tests:
+          - not_null
+          - relationships: {to: ref('dim_product'), field: product_key}
+      - name: store_key
+        tests:
+          - not_null
+          - relationships: {to: ref('dim_store'), field: store_key}
+
+  - name: fct_order_lifecycle
+    columns:
+      - name: order_lifecycle_key
+        tests: [not_null, unique]
+      - name: ordered_date_key
+        tests:
+          - not_null
+          - relationships: {to: ref('dim_date'), field: date_key}
+      - name: paid_date_key
+        tests: [{relationships: {to: ref('dim_date'), field: date_key}}]
+      - name: shipped_date_key
+        tests: [{relationships: {to: ref('dim_date'), field: date_key}}]
+      - name: delivered_date_key
+        tests: [{relationships: {to: ref('dim_date'), field: date_key}}]
+      - name: cancelled_date_key
+        tests: [{relationships: {to: ref('dim_date'), field: date_key}}]
+      - name: customer_key
+        tests:
+          - not_null
+          - relationships: {to: ref('dim_customer'), field: customer_key}
+      - name: store_key
+        tests:
+          - not_null
+          - relationships: {to: ref('dim_store'), field: store_key}
+      - name: employee_key
+        tests:
+          - not_null
+          - relationships: {to: ref('dim_employee'), field: employee_key}
