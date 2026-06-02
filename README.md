@@ -284,19 +284,7 @@ docker compose exec lake-postgres psql -U lake_user -d lake_db -c "SELECT count(
 
 ---
 
-## 17. Presentation guide (talking points)
-
-- **The 3 grains, demonstrated:** transactional (`fct_sales`, `fct_payments`), periodic snapshot (`fct_inventory_daily`), accumulating snapshot (`fct_order_lifecycle`).
-- **Show incremental working live:** first full extract takes minutes (360k `order_items`); the dlt load step then completes in **0.02s** on the next run because state filtered everything out.
-- **Show resilience live:** the extractor log line where a real `500` triggered backoff and recovered on attempt 2.
-- **Show Kimball discipline:** surrogate keys, Unknown members (`0` unknown FKs in facts), SCD2 history with soft-deletes retained, the point-in-time join attributing each sale to the price/segment valid at that moment.
-- **The big insight to lead with:** discounting halves margin (28.9% → 13.8%) — concrete, actionable.
-- **The data-quality story:** 2.03% anomalous payments isolated and excluded; future-dated timestamps surfaced but proven harmless downstream.
-- **The one tricky bug worth telling:** the SCD2 first-slice backdating fix (56% → 0% unknown customers) — shows you understood *why* point-in-time joins need a beginning-of-time anchor.
-
----
-
-## 18. Checkpoint → rubric map
+## 17. Checkpoint → rubric map
 
 | Checkpoint | Where | Status |
 |---|---|---|
